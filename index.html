@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Survivor</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="stage">
+      <canvas id="game" width="1280" height="720"></canvas>
+
+      <section id="start-screen">
+        <h1>AI Survivor</h1>
+        <p class="tagline">撑过普通怪和精英，45 秒后击倒 Boss</p>
+        <button id="start-button" type="button">开始游戏</button>
+        <ul class="hints">
+          <li>WASD / 方向键：移动</li>
+          <li>鼠标：瞄准</li>
+          <li>左键：射击</li>
+        </ul>
+      </section>
+
+      <section id="pause-screen" hidden>
+        <div class="modal">
+          <h2>暂停</h2>
+          <div class="pause-actions">
+            <button id="resume-button" type="button">继续</button>
+            <button id="restart-button" type="button">重新开始</button>
+          </div>
+          <p class="hint">ESC 继续，R 重新开始</p>
+        </div>
+      </section>
+
+      <section id="upgrade-screen" hidden>
+        <div class="modal">
+          <h2>选择强化</h2>
+          <div id="upgrade-cards"></div>
+        </div>
+      </section>
+
+      <section id="result-screen" hidden>
+        <div class="modal">
+          <p class="eyebrow" id="result-kicker">本局结束</p>
+          <h2 id="result-title">失败</h2>
+          <div id="result-stats"></div>
+          <div class="pause-actions">
+            <button id="result-restart" type="button">再来一局</button>
+            <button id="result-menu" type="button">返回标题</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="hud" hidden>
+        <div class="hud-left panel">
+          <div class="hud-row"><span>HP</span><strong id="hud-hp">100 / 100</strong></div>
+          <div class="hud-row"><span>等级</span><strong id="hud-level">1</strong></div>
+          <div class="xp">
+            <span>经验</span>
+            <div class="xp-track"><div id="hud-xp-fill"></div></div>
+          </div>
+          <p id="hud-weapon">弹道 1  ·  射速 4.0  ·  伤害 10</p>
+        </div>
+        <div class="hud-right panel">
+          <div class="hud-row"><span>击杀</span><strong id="hud-kills">0</strong></div>
+          <div class="hud-row"><span>时间</span><strong id="hud-time">00:00</strong></div>
+          <p id="hud-boss-eta">Boss 00:45</p>
+        </div>
+        <div id="boss-bar" hidden>
+          <span id="boss-name">Boss</span>
+          <div class="boss-track"><div id="boss-fill"></div></div>
+        </div>
+        <div class="director panel">
+          <div class="director-head">
+            <span>难度</span>
+            <strong id="hud-threat-label">低压</strong>
+          </div>
+          <div class="threat-track"><div id="hud-threat"></div></div>
+          <p id="hud-director-detail">精英 0%  ·  同屏上限 8</p>
+        </div>
+        <p class="hud-hint">按住左键射击，ESC 暂停</p>
+      </div>
+
+      <p id="banner" hidden>Boss 来了</p>
+    </div>
+
+    <p id="boot-note">
+      请在项目目录运行 <code>node server.mjs</code>，然后打开 http://127.0.0.1:8080
+    </p>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
